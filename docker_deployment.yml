@@ -1,0 +1,19 @@
+---
+- hosts: dockerhost
+  tasks:
+
+    - name: stop the container
+      command: docker stop regapp-server
+      ignore_errors: yes
+
+    - name: delete cont
+      command: docker rm regapp-server
+      ignore_errors: yes
+
+    - name: delete image
+      command: docker rmi joymeena21/regapp:latest
+      ignore_errors: yes
+
+
+    - name: create and run a container with latest image from dockerhub
+      command: docker run -d --name regapp-server -p 8082:8080 joymeena21/regapp:latest

@@ -1,0 +1,12 @@
+---
+- hosts: k8s
+  user: root
+  tasks:
+    - name: creating pods  with latest image from docker hub
+      command: kubectl apply -f deployment.yml
+
+    - name: creating service and lionking with deplyment
+      command: kubectl apply -f service.yml
+
+    - name: update deploy with new pods if image updated in dockerhub
+      command: kubectl rollout restart deployment.apps/demo-regapp

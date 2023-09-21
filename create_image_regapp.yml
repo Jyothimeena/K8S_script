@@ -1,0 +1,13 @@
+---
+ - hosts: ansiblehost
+   tasks:
+     - name: creating image
+       command: docker build -t regapp:latest .
+       args:
+         chdir: /opt/docker
+
+     - name: reserving space in dockerhub
+       command: docker tag regapp:latest joymeena21/regapp:latest
+
+     - name: push image to docker hub 
+       command: docker push joymeena21/regapp:latest
