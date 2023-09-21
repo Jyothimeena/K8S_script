@@ -1,0 +1,15 @@
+kind: Service
+apiVersion: v1
+metadata: 
+   name: demo-app
+   labels: 
+     app: regapp
+spec: 
+   selector:
+     app: regapp
+   ports:
+     - port: 8080
+       targetPort: 8080
+   type: LoadBalancer
+
+
